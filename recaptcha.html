@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urkadia reCAPTCHA</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+    }
+  </style>
+  <script>
+    var onloadCallback = function () {
+      grecaptcha.render('html_element', {
+        'sitekey': '6LddQw4rAAAAADzjDrR10ZX2pcAbMNKTmB8UuMZU',
+        'callback': function(response) {
+          window.parent.postMessage({ recaptchaToken: response }, '*');
+        },
+        'theme': 'light'
+      });
+    };
+  </script>
+  <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+</head>
+<body>
+  <div id="html_element"></div>
+</body>
+</html>
